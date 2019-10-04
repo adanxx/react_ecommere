@@ -11,8 +11,8 @@ class SignIn extends React.Component{
         super(props);
 
         this.state ={
-            email: '',
-            password : ''
+            email: 'test@gmail.com',
+            password : '1234'
         }
     }
 
@@ -52,8 +52,11 @@ class SignIn extends React.Component{
                      label='password'
                      required
                    /> 
-                 <CustomButton type="submit">Sign In</CustomButton>
-                 <CustomButton onClick={signInWithGoogle}>{''}Sign With Google{''}</CustomButton>
+                 <div className='buttons'>
+                   <CustomButton type="submit">Sign In</CustomButton>
+                   <CustomButton onClick={signInWithGoogle}  isGoogleSignin={true} >{''}Sign With Google{''}</  CustomButton>
+                 </div>
+               
               </form>
             </div>
         )
