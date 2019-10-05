@@ -7,21 +7,22 @@ import secretKey from '../config/secret';
   // Your web app's Firebase configuration
   var firebaseConfig = {
     apiKey: secretKey.apiKey,
-    authDomain: secretKey.authDomain,
-    databaseURL: secretKey.databaseUrl,
-    projectId: "crowndb-1ea41",
+    authDomain: "crown-db-15c5c.firebaseapp.com",
+    databaseURL: "https://crown-db-15c5c.firebaseio.com",
+    projectId: "crown-db-15c5c",
     storageBucket: "",
-    messagingSenderId: "288964052414",
-    appId: secretKey.appId,
-    measurementId: "G-PQ8FFZ2RE1"
+    messagingSenderId: "842854913631",
+    appId: secretKey.appId
   };
-
 
   export const createUserProfileDocument = async (userAuth, additionalDate )=>{
 
     if(!userAuth) return;
-      
+    
     const userRef = await firestore.doc(`users/${userAuth.uid}`);
+  
+    console.log(userRef)
+ 
     const snapShot = await userRef.delete();
  
    if(!snapShot.exists) {
