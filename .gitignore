@@ -12,7 +12,7 @@
 /build
 
 # firebase auth
-/src/firebase
+/src/config
 
 # misc
 .DS_Store
