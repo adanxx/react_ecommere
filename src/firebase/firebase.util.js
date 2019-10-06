@@ -19,13 +19,14 @@ import secretKey from '../config/secret';
 
     if(!userAuth) return;
     
-    const userRef = await firestore.doc(`users/${userAuth.uid}`);
-  
+    const userRef = firestore.doc(`/users/${userAuth.uid}`);
     console.log(userRef)
+
+    const snapShot = await userRef.get();
+    console.log(snapShot);
  
-    const snapShot = await userRef.delete();
- 
-   if(!snapShot.exists) {
+   if(!snapShot.exists === false)  {
+
       const {dispayName, email} = userAuth;
       const createdAt = new Date();
 
