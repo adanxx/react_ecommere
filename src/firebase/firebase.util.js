@@ -2,17 +2,17 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 
-import secretKey from '../config/secret';
+import secret from '../config/secret';
 
   // Your web app's Firebase configuration
   var firebaseConfig = {
-    apiKey: secretKey.apiKey,
+    apiKey: secret.apiKey,
     authDomain: "crown-db-15c5c.firebaseapp.com",
     databaseURL: "https://crown-db-15c5c.firebaseio.com",
     projectId: "crown-db-15c5c",
     storageBucket: "",
     messagingSenderId: "842854913631",
-    appId: secretKey.appId
+    appId: secret.appId
   };
 
   export const createUserProfileDocument = async (userAuth, additionalDate )=>{
@@ -20,20 +20,20 @@ import secretKey from '../config/secret';
     if(!userAuth) return;
     
     const userRef = firestore.doc(`/users/${userAuth.uid}`);
-    console.log(userRef)
+    // console.log(userRef)
 
     const snapShot = await userRef.get();
-    console.log(snapShot);
+    // console.log(snapShot);
  
-   if(!snapShot.exists === false)  {
+   if(snapShot.exists === false)  {
 
-      const {dispayName, email} = userAuth;
+      const {displayName, email} = userAuth;
       const createdAt = new Date();
 
 
       try {
           await userRef.set({
-            dispayName,
+            displayName,
             email, 
             createdAt, 
             ...additionalDate
