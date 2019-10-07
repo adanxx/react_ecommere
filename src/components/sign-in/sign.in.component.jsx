@@ -2,7 +2,7 @@ import React from 'react';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 
-import {signInWithGoogle} from '../../firebase/firebase.util';
+import {auth, signInWithGoogle} from '../../firebase/firebase.util';
 
 import './sign-in.style.scss';
 
@@ -11,15 +11,26 @@ class SignIn extends React.Component{
         super(props);
 
         this.state ={
-            email: 'test@gmail.com',
-            password : '1234'
+            email: 'baker123@gmail.com',
+            password : 'testtest'
         }
     }
 
-    handSubmit = event =>{
-        event.preventDefault();
+    handSubmit = async event =>{
+      event.preventDefault();
+      debugger
+      const {email, password} = this.state;
 
-        this.setState({email: '', password: ''})
+      try {
+           
+       await auth.signInWithEmailAndPassword(email, password);
+       this.setState({email: '', password: ''}) 
+
+      } catch (error) {
+          console.error("Error: Failed to process Sign-in: ", error);
+      }
+
+        
     }
 
     handChange = event => {
