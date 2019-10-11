@@ -18,7 +18,7 @@ class SignIn extends React.Component{
 
     handSubmit = async event =>{
       event.preventDefault();
-      debugger
+
       const {email, password} = this.state;
 
       try {
