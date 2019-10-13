@@ -1,4 +1,5 @@
 export const cartActionTypes = {
     TOGGLE_CART_STATUS: 'TOGGLE_CART_STATUS',
-    ADD_ITEM: 'ADD_ITEM'
+    ADD_ITEM: 'ADD_ITEM',
+    CLEAR_ITEM_FROM_CART: 'CLEAR_ITEM_FROM_CART'
 }
