@@ -7,8 +7,6 @@ export const addItemCart = (cartItem, cartItemToAdd)=>{
 }
 
 export const removeItem = (cartItems, cartItemRemove) =>{
-
-    debugger
    const existingItem = cartItems.find( cartItem => cartItem.id === cartItemRemove.id);
 
    if(existingItem.quantity === 1){
